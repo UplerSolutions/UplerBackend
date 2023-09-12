@@ -10,7 +10,6 @@ export class PurchaseProductMiddleware {
   ) {}
   purchaseProductValidator(req: Request, res: Response, next: NextFunction) {
     const { quantityProduct, totalPrice, purchase, product } = req.body;
-
     const valid = new PurchaseProductDTO();
     valid.quantityProduct = quantityProduct;
     valid.totalPrice = totalPrice;

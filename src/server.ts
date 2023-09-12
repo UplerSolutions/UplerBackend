@@ -22,7 +22,7 @@ class ServerBootstrap extends ConfigServer{
         //definimos los pasos a seguir para ejecutar nuestra app
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended:true}));
-        this.dbConnect()
+        
         this.app.use(morgan("dev"));
         //definimos los permisos de cors
         this.app.use(cors({
@@ -31,6 +31,7 @@ class ServerBootstrap extends ConfigServer{
             credentials: true,
         }));
         this.app.use("/api",this.routers());
+        this.dbConnect()
         this.listen();
     };
     //metodo para definir nuestras rutas

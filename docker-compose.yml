@@ -4,7 +4,7 @@ services:
   mysql_db:
     image: mysql:5.7
     volumes: 
-      - /home/mateo/Descargas/type-pruebas (2)/type-pruebas/mysql/init.sql
+      - /home/mateo-pc/Desktop/type-pruebas/mysql/init.sql/:/docker-entrypoint-initdb.d/init.sql
     command: --init-file /docker-entrypoint-initdb.d/init.sql
     ports:
       - "3312:3306"
@@ -14,5 +14,5 @@ services:
       MYSQL_USER: superu
       MYSQL_ROOT_PASSWORD: Argul1266
       MYSQL_PASSWORD: Argul1266
-    # extra_hosts:
-    #   - "mysql-server-hostname:172.21.0.1"
+    extra_hosts:
+      - "mysql-server-hostname:172.21.0.1"

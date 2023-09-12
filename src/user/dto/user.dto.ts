@@ -29,7 +29,7 @@ export class UserDTO extends BaseDTO {
   @IsNotEmpty()
   phone_number!:number
 
-  role!:string
+  role!:RoleType
 };
 
 export enum RoleType{
