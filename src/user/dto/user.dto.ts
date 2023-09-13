@@ -27,7 +27,7 @@ export class UserDTO extends BaseDTO {
   street_adrees!:string;
 
   @IsNotEmpty()
-  phone_number!:number
+  number_phone!:number
 
   role!:RoleType
 };

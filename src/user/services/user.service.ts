@@ -32,7 +32,7 @@ export class UserService extends BaseService<UserEntity>{
         const newUser=(await this.execRepository).create(body); //guardamos en memoria (thompson puto)
         const hash = await bcrypt.hash(newUser.password, 10);   // encriptamos la contraseña
         newUser.password = hash;                                //almacenamos la contraseña encriptada en el objeto
-        return (await this.execRepository).save(body);
+        return (await this.execRepository).save(newUser);
     };
 
     async findUserByEmail(email: string): Promise<UserEntity | null> {

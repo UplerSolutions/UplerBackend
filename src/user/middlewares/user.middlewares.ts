@@ -1,14 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import { UserDTO } from "../dto/user.dto";
 import { validate } from "class-validator";
-import { HttpResponse } from "../../shared/response/http.status.response";
+import { SharedMiddleware } from "../../shared/middlewares/shared.middleware";
 
-export class UserMiddleware {
+export class UserMiddleware extends SharedMiddleware{
     constructor(
-      private readonly httpResponse: HttpResponse = new HttpResponse()
-    ) {}
+    ) {super()}
     userValidator(req: Request, res: Response, next: NextFunction) {
-      const { name, lastname, username, email, password, city, province, role } =
+      const { name, lastname, username, email, password, city, province, role,street_adrees,number_phone } =
         req.body;
   
       const valid = new UserDTO();
@@ -21,7 +20,8 @@ export class UserMiddleware {
       valid.city = city;
       valid.province = province;
       valid.role = role;
-  
+      valid.street_adrees = street_adrees;
+      valid.number_phone = number_phone;
       validate(valid).then((err) => {
         if (err.length > 0) {
           return this.httpResponse.InternalServerError(res, err);

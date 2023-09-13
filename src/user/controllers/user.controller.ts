@@ -37,6 +37,7 @@ export class UserController{
 
     async createUsers(req:Request,res:Response){
         try{
+
           const data=await this.userService.createUser(req.body);
           return this.httpResponse.Ok(res,data)
         }catch(e){

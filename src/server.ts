@@ -11,6 +11,9 @@ import { PurchaseProductRouter } from "./purchase-products/purchase-product.rout
 import { CustomerRouter } from "./customer/customer.router";
 import { ProductRouter } from "./products/products.router";
 import { PurchaseRouter } from "./purchase/purchase.router";
+import { LoginStrategy } from "./auth/strategies/login.strategy";
+import { JwtStrategy } from "./auth/strategies/jwt.strategy";
+import { AuthRouter } from "./auth/auth.router";
 
 class ServerBootstrap extends ConfigServer{
     //definimos nustras variables a utilizar
@@ -22,7 +25,8 @@ class ServerBootstrap extends ConfigServer{
         //definimos los pasos a seguir para ejecutar nuestra app
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended:true}));
-        
+        this.passportUse()
+        this.dbConnect()
         this.app.use(morgan("dev"));
         //definimos los permisos de cors
         this.app.use(cors({
@@ -31,7 +35,6 @@ class ServerBootstrap extends ConfigServer{
             credentials: true,
         }));
         this.app.use("/api",this.routers());
-        this.dbConnect()
         this.listen();
     };
     //metodo para definir nuestras rutas
@@ -42,7 +45,15 @@ class ServerBootstrap extends ConfigServer{
             new PurchaseProductRouter().router,
             new CustomerRouter().router,
             new ProductRouter().router,
-            new PurchaseRouter().router
+            new PurchaseRouter().router,
+            new AuthRouter().router
+        ];
+    };
+
+    passportUse(){
+        return [
+            new LoginStrategy().use,
+            new JwtStrategy().use        
         ];
     };
     //metodo para conectarnos a la base de datos

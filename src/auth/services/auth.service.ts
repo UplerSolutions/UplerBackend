@@ -16,16 +16,17 @@ export class AuthService extends ConfigServer{
     {
         super()
     }   
-    public async validateUser(username:string,password:string):Promise<UserEntity|null>{
+    public async validateUser(username:string,password:string):Promise<UserEntity|null | string>{
+
         const userByEmail=await this.userService.findUserByEmail(username);
         const userByUsername=await this.userService.findUserByUsername(username);
         if(userByUsername){
             const isMatch=await bcrypt.compare(password,userByUsername.password);
-            isMatch&&userByUsername; //if y return
-        };
+            if (isMatch) return userByUsername;
+        }
         if(userByEmail){
             const isMatch=await bcrypt.compare(password,userByEmail.password);
-            isMatch&&userByEmail; //if y return
+            if (isMatch) return userByEmail;
         };
         return null
     }
