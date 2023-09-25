@@ -5,14 +5,13 @@ services:
     image: mysql:5.7
     volumes: 
       - /home/mateo-pc/Desktop/type-pruebas/mysql/init.sql/:/docker-entrypoint-initdb.d/init.sql
-    command: --init-file /docker-entrypoint-initdb.d/init.sql
+    command: --init-file /docker-entrypoint-initdb.d/init.sql --bind-address=0.0.0.0
     ports:
-      - "3312:3306"
+      - "3307:3306"
     environment:
       MYSQL_DATABASE: mydb
-      MYSQL_ROOT_USER: superu
-      MYSQL_USER: superu
-      MYSQL_ROOT_PASSWORD: Argul1266
-      MYSQL_PASSWORD: Argul1266
-    extra_hosts:
-      - "mysql-server-hostname:172.21.0.1"
+      MYSQL_ROOT_USER: super
+      MYSQL_USER: super
+      MYSQL_ROOT_PASSWORD: Upler2023
+      MYSQL_PASSWORD: Upler2023
+
