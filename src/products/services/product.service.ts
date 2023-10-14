@@ -1,4 +1,4 @@
-import { DeleteResult, UpdateResult } from "typeorm";
+import { DeleteResult, UpdateResult,ILike,Between } from "typeorm";
 import { BaseService } from "../../config/base.service";
 import { ProductDTO } from "../dto/product.dto";
 
@@ -16,6 +16,24 @@ export class ProductService extends BaseService<ProductEntity> {
   }
   async findProductById(id: string): Promise<ProductEntity | null> {
     return (await this.execRepository).findOneBy({ id });
+  }
+  async searchProductByName(term: string): Promise<ProductEntity[]> {
+    return (await this.execRepository).find({
+      where: [
+        { 
+          productName:ILike(`%${term}%`)
+        },
+      ],
+    })
+  }
+  async searchProductByRange(low:number,high:number):Promise<ProductEntity[]>{
+    return (await this.execRepository).find({
+      where: [
+        { 
+          price: Between(low,high)
+        }
+      ],
+    })
   }
   async createProduct(body: ProductDTO): Promise<ProductEntity>{
     return (await this.execRepository).save(body);

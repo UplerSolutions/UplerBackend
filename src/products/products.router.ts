@@ -10,11 +10,21 @@ export class ProductRouter extends BaseRouter<
   }
 
   routes(): void {
-    this.router.get("/products", (req, res) =>
-      this.controller.getProducts(req, res)
+    this.router.get(
+      "/products", 
+      (req, res) => this.controller.getProducts(req, res)
     );
-    this.router.get("/product/:id", (req, res) =>
-      this.controller.getProductById(req, res)
+    this.router.get(
+      "/product/:id", 
+      (req, res) =>this.controller.getProductById(req, res)
+    );
+    this.router.get(
+      "/productsByName/",
+      (req,res) => this.controller.getProductSearchByName(req,res)
+    );
+    this.router.get(   
+        "/getProductsByRange/",
+        (req,res)=>this.controller.getProductSearchByRange(req,res)
     );
     this.router.post(
       "/createProduct",

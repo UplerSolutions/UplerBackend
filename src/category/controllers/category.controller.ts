@@ -22,6 +22,14 @@ export class CategoryController {
       console.error(e);
     }
   }
+  async getCategoryNameBySearch(req:Request,res:Response){
+    const name=req.query.name as string
+    try{
+      const data=await this.categoryService.searchCategoryByName(name);
+    }catch(e){
+      console.error(e);
+    }
+  }
   async createCategory(req: Request, res: Response) {
     try {
       const data = await this.categoryService.createCategory(req.body);
@@ -30,6 +38,7 @@ export class CategoryController {
       console.error(e);
     }
   }
+
   async updateCategory(req: Request, res: Response) {
     const { id } = req.params;
     try {
