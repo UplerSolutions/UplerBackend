@@ -22,6 +22,9 @@ export class ProductEntity extends BaseEntity {
   image!:string;
 
   @Column()
+  diirectLink!:string;
+
+  @Column()
   price!: number;
 
   @ManyToOne(() => CategoryEntity, (category) => category.products)
