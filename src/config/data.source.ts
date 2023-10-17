@@ -23,7 +23,7 @@ const Config: DataSourceOptions = {
   // migrationsRun: false,
   logging: false,
   namingStrategy: new SnakeNamingStrategy(),
-  // driver:createConnection
+  driver:createConnection
 };
 
 
