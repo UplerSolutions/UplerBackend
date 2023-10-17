@@ -16,6 +16,10 @@ export class CategoryRouter extends BaseRouter<
     this.router.get("/category/:id", (req, res) =>
       this.controller.getCategoryById(req, res)
     );
+    this.router.get(
+      "/categoryByName/",
+      (req,res)=> this.controller.getCategoryNameBySearch(req,res));
+
     this.router.post(
       "/createCategory",
       (req, res, next) => [this.middleware.categoryValidator(req, res, next)],

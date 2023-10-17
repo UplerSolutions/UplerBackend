@@ -1,7 +1,11 @@
-import { DeleteResult, UpdateResult } from "typeorm";
+import { DeleteResult, UpdateResult,ILike } from "typeorm";
 import { BaseService } from "../../config/base.service";
 import { CategoryEntity } from "../entities/category.entity";
 import { CategoryDTO } from "../dto/category.dto";
+
+
+
+
 
 export class CategoryService extends BaseService<CategoryEntity> {
   constructor() {
@@ -13,6 +17,15 @@ export class CategoryService extends BaseService<CategoryEntity> {
   }
   async findCategoryById(id: string): Promise<CategoryEntity | null> {
     return (await this.execRepository).findOneBy({ id });
+  }
+  async searchCategoryByName(term:string):Promise<CategoryEntity[]>{
+    return (await this.execRepository).find({
+      where:[
+        {
+          categoryName : ILike(`%${term}%`),
+        }
+      ]
+    })
   }
   async createCategory(body: CategoryDTO): Promise<CategoryEntity> {
     return (await this.execRepository).save(body);

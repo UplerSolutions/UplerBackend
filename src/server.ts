@@ -14,6 +14,9 @@ import { PurchaseRouter } from "./purchase/purchase.router";
 import { LoginStrategy } from "./auth/strategies/login.strategy";
 import { JwtStrategy } from "./auth/strategies/jwt.strategy";
 import { AuthRouter } from "./auth/auth.router";
+import helmet from "helmet";
+
+
 
 class ServerBootstrap extends ConfigServer{
     //definimos nustras variables a utilizar
@@ -24,16 +27,19 @@ class ServerBootstrap extends ConfigServer{
         super();
         //definimos los pasos a seguir para ejecutar nuestra app
         this.app.use(express.json());
-        this.app.use(express.urlencoded({extended:true}));
+        this.app.use(express.urlencoded({extended:true, limit:"50mb"}));
         this.passportUse()
         this.dbConnect()
         this.app.use(morgan("dev"));
-        //definimos los permisos de cors
-        this.app.use(cors({
+        this.app.use(cors({ //definimos los permisos de cors
             origin: true,
             methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
             credentials: true,
         }));
+        this.app.use(helmet.xssFilter()); //previene inyeccion javascript
+        this.app.use(helmet.noSniff());
+        this.app.use(helmet.ieNoOpen());
+        this.app.disable("x-powered-by");
         this.app.use("/api",this.routers());
         this.listen();
     };

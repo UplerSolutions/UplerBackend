@@ -7,7 +7,13 @@ export class ProductDTO extends BaseDTO {
   productName!: string;
 
   @IsNotEmpty()
-  description!: string;
+  LowDescription!: string;
+
+  @IsNotEmpty()
+  LongDescription!:string;
+
+  @IsNotEmpty()
+  seller!:string;
 
   @IsNotEmpty()
   price!: number;
@@ -15,3 +21,4 @@ export class ProductDTO extends BaseDTO {
   @IsNotEmpty()
   category!: CategoryEntity;
 }
+

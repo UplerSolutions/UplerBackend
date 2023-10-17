@@ -1,8 +1,8 @@
 import { Column, Entity, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 import { BaseEntity } from "../../config/base.entity";
-import { CustomerEntity } from "../../customer/entities/customer.entity";
 import { CategoryEntity } from "../../category/entities/category.entity";
 import { PurchasesProductsEntity } from "../../purchase-products/entities/purchases-products.entity"
+
 
 @Entity({ name: "product" })
 export class ProductEntity extends BaseEntity {
@@ -10,7 +10,19 @@ export class ProductEntity extends BaseEntity {
   productName!: string;
 
   @Column()
-  description!: string;
+  LowDescription!: string;
+
+  @Column()
+  LongDescription!:string;
+
+  @Column()
+  seller!:string;
+
+  @Column()
+  image!:string;
+
+  @Column()
+  diirectLink!:string;
 
   @Column()
   price!: number;
@@ -21,4 +33,7 @@ export class ProductEntity extends BaseEntity {
 
   @OneToMany(() => PurchasesProductsEntity,(purchaseProduct) => purchaseProduct.product)
   purchaseProduct!: PurchasesProductsEntity[];
+
+  @Column()
+  rating!:number
 }

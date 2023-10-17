@@ -6,7 +6,7 @@ import { PurchaseEntity } from "../../purchase/entities/purchase.entity";
 @Entity({name:'customer'})
 export class CustomerEntity extends BaseEntity{
     @Column()
-    adress!:string;
+    address!:string;
 
     @Column()
     dni!:number;
@@ -17,10 +17,5 @@ export class CustomerEntity extends BaseEntity{
 
     @OneToMany(()=>PurchaseEntity,(purchase)=>purchase.customer)
     purchases!:PurchaseEntity[]
-    
-
-
-
-
 
 }
