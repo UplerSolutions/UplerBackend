@@ -1,39 +1,44 @@
-import { Column, Entity, ManyToOne, JoinColumn, OneToMany } from "typeorm";
-import { BaseEntity } from "../../config/base.entity";
-import { CategoryEntity } from "../../category/entities/category.entity";
-import { PurchasesProductsEntity } from "../../purchase-products/entities/purchases-products.entity"
+import { Column, Entity, ManyToOne, JoinColumn, OneToMany } from 'typeorm'
+import { BaseEntity } from '../../config/base.entity'
+import { CategoryEntity } from '../../category/entities/category.entity'
+import { PurchasesProductsEntity } from '../../purchase-products/entities/purchases-products.entity'
 
-
-@Entity({ name: "product" })
+@Entity({ name: 'product' })
 export class ProductEntity extends BaseEntity {
   @Column()
-  productName!: string;
+  productName!: string
 
   @Column()
-  LowDescription!: string;
+  LowDescription!: string
 
   @Column()
-  LongDescription!:string;
+  LongDescription!: string
 
   @Column()
-  seller!:string;
+  seller!: string
 
   @Column()
-  image!:string;
+  image!: string
 
   @Column()
-  diirectLink!:string;
+  directLink!: string
 
   @Column()
-  price!: number;
+  price!: number
 
-  @ManyToOne(() => CategoryEntity, (category) => category.products)
-  @JoinColumn({ name: "category_id" })
-  category!: CategoryEntity;
+  @ManyToOne(
+    () => CategoryEntity,
+    (category) => category.products
+  )
+  @JoinColumn({ name: 'category_id' })
+  category!: CategoryEntity
 
-  @OneToMany(() => PurchasesProductsEntity,(purchaseProduct) => purchaseProduct.product)
-  purchaseProduct!: PurchasesProductsEntity[];
+  @OneToMany(
+    () => PurchasesProductsEntity,
+    (purchaseProduct) => purchaseProduct.product
+  )
+  purchaseProduct!: PurchasesProductsEntity[]
 
   @Column()
-  rating!:number
+  rating!: number
 }
