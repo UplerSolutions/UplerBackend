@@ -18,9 +18,6 @@ export class ProductEntity extends BaseEntity {
   seller!: string
 
   @Column()
-  image!: string
-
-  @Column()
   directLink!: string
 
   @Column()
