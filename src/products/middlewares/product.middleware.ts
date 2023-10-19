@@ -14,8 +14,8 @@ export class ProductMiddleware {
       longDescription,
       category,
       price,
-      seller,
       directLink,
+      seller,
       imageUrl
     } = req.body
 
@@ -25,8 +25,8 @@ export class ProductMiddleware {
     valid.longDescription = longDescription
     valid.category = category
     valid.price = price
-    valid.seller = seller
     valid.directLink = directLink
+    valid.seller = seller
     valid.imageUrl = imageUrl
 
     validate(valid).then((err) => {
