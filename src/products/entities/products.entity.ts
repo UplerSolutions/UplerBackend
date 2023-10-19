@@ -9,10 +9,10 @@ export class ProductEntity extends BaseEntity {
   productName!: string
 
   @Column()
-  LowDescription!: string
+  lowDescription!: string
 
   @Column()
-  LongDescription!: string
+  longDescription!: string
 
   @Column()
   seller!: string
