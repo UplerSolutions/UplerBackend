@@ -13,7 +13,8 @@ export class ProductMiddleware {
       lowDescription,
       category,
       price,
-      longDescription
+      longDescription,
+      seller
     } = req.body
 
     const valid = new ProductDTO()
@@ -22,6 +23,7 @@ export class ProductMiddleware {
     valid.LongDescription = longDescription
     valid.category = category
     valid.price = price
+    valid.seller = seller
 
     validate(valid).then((err) => {
       if (err.length > 0) {
