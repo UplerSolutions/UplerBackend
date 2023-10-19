@@ -15,7 +15,8 @@ export class ProductMiddleware {
       price,
       longDescription,
       seller,
-      directLink
+      directLink,
+      imageUrl
     } = req.body
 
     const valid = new ProductDTO()
@@ -26,6 +27,7 @@ export class ProductMiddleware {
     valid.price = price
     valid.seller = seller
     valid.directLink = directLink
+    valid.imageUrl = imageUrl
 
     validate(valid).then((err) => {
       if (err.length > 0) {
