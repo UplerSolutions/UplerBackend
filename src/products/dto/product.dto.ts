@@ -7,10 +7,10 @@ export class ProductDTO extends BaseDTO {
   productName!: string
 
   @IsNotEmpty()
-  LowDescription!: string
+  lowDescription!: string
 
   @IsNotEmpty()
-  LongDescription!: string
+  longDescription!: string
 
   @IsNotEmpty()
   seller!: string

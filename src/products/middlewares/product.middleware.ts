@@ -11,9 +11,9 @@ export class ProductMiddleware {
     const {
       productName,
       lowDescription,
+      longDescription,
       category,
       price,
-      longDescription,
       seller,
       directLink,
       imageUrl
@@ -21,8 +21,8 @@ export class ProductMiddleware {
 
     const valid = new ProductDTO()
     valid.productName = productName
-    valid.LowDescription = lowDescription
-    valid.LongDescription = longDescription
+    valid.lowDescription = lowDescription
+    valid.longDescription = longDescription
     valid.category = category
     valid.price = price
     valid.seller = seller
