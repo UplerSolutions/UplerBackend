@@ -12,13 +12,13 @@ RUN npm install
 
 ENV NODE_ENV=production
 ENV PORT=10005
-ENV DB_PORT=6209
+ENV DB_PORT=7304
 ENV DB_DATABASE=railway
 ENV DB_ROOT_USER=root
 ENV DB_USER=root
-ENV DB_ROOT_PASSWORD=b0kYtNrNXRiedmibaLmz
-ENV DB_PASSWORD=b0kYtNrNXRiedmibaLmz
-ENV DB_HOST=containers-us-west-90.railway.app
+ENV DB_ROOT_PASSWORD=hz7ZmOcfjNjVd8P1YWcg
+ENV DB_PASSWORD=hz7ZmOcfjNjVd8P1YWcg
+ENV DB_HOST=containers-us-west-88.railway.app
 ENV JWT_SECRET=Upler2023+
 
 
