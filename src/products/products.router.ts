@@ -28,7 +28,7 @@ export class ProductRouter extends BaseRouter<
     );
     this.router.get(
         '/getProductsByCategory',  
-        (req, res) => {this.controller.getProductSearchByRange(req,res)});
+        (req, res) => {this.controller.getProductsByCategory(req,res)});
     this.router.post(
       "/createProduct",
       (req, res, next) => [this.middleware.productValidator(req, res, next)],
