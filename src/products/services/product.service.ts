@@ -35,18 +35,15 @@ export class ProductService extends BaseService<ProductEntity> {
       ],
     })
   }
-  async filterProductsByCategory(filterDTO: any) {
-    // Construct a FindManyOptions object to filter products by category
-    const options: FindManyOptions<ProductDTO> = {
-      where: {
-        category: filterDTO.categoryId,
-      },
-    };
-    // Use TypeORM's getRepository to fetch the products
-    const productRepository = getRepository(ProductDTO);
-    const filteredProducts = await productRepository.find(options);
+  async filterProductsByCategory(category: any): Promise<ProductEntity[]> {
+    return  (await this.execRepository).find({
+      where: [
+        {
+          category: category.categoryName,
+        }
+      ],
+    })
 
-    return filteredProducts;
   }
 
   async createProduct(body: ProductDTO): Promise<ProductEntity> {

@@ -43,15 +43,9 @@ export class ProductController {
   async getProductsByCategory(req: Request, res: Response) {
     try {
       // Extract the categoryId from the request query
-      const categoryId = req.query.categoryId as string;
-
-      // Create a DTO with the categoryId
-      const filterDTO = new ProductDTO();
-      filterDTO.categoryId = categoryId;
-
+      const category= req.query.categoryId as string;
       // Call the productService to filter products by category
-      const data = await this.productService.filterProductsByCategory(filterDTO);
-
+      const data = await this.productService.filterProductsByCategory(category);
       res.status(200).json(data);
     } catch (e) {
       console.error(e);
