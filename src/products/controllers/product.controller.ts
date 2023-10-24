@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { ProductService } from "../services/product.service";
+import { ProductDTO } from "../dto/product.dto";
 
 export class ProductController {
   constructor(
@@ -37,6 +38,24 @@ export class ProductController {
       const data = await this.productService.searchProductByRange(low, high)
     }catch(e){
       console.error(e);
+    }
+  }
+  async getProductsByCategory(req: Request, res: Response) {
+    try {
+      // Extract the categoryId from the request query
+      const categoryId = req.query.categoryId as string;
+
+      // Create a DTO with the categoryId
+      const filterDTO = new ProductDTO();
+      filterDTO.categoryId = categoryId;
+
+      // Call the productService to filter products by category
+      const data = await this.productService.filterProductsByCategory(filterDTO);
+
+      res.status(200).json(data);
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
   }
   async createProduct(req: Request, res: Response) {

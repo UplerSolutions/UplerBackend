@@ -1,4 +1,4 @@
-import { DeleteResult, UpdateResult,ILike,Between } from "typeorm";
+import { DeleteResult, UpdateResult, ILike, Between, getRepository, FindManyOptions } from "typeorm";
 import { BaseService } from "../../config/base.service";
 import { ProductDTO } from "../dto/product.dto";
 
@@ -20,28 +20,42 @@ export class ProductService extends BaseService<ProductEntity> {
   async searchProductByName(term: string): Promise<ProductEntity[]> {
     return (await this.execRepository).find({
       where: [
-        { 
-          productName:ILike(`%${term}%`)
+        {
+          productName: ILike(`%${term}%`)
         },
       ],
     })
   }
-  async searchProductByRange(low:number,high:number):Promise<ProductEntity[]>{
+  async searchProductByRange(low: number, high: number): Promise<ProductEntity[]> {
     return (await this.execRepository).find({
       where: [
-        { 
-          price: Between(low,high)
+        {
+          price: Between(low, high)
         }
       ],
     })
   }
-  async createProduct(body: ProductDTO): Promise<ProductEntity>{
+  async filterProductsByCategory(filterDTO: any) {
+    // Construct a FindManyOptions object to filter products by category
+    const options: FindManyOptions<ProductDTO> = {
+      where: {
+        category: filterDTO.categoryId,
+      },
+    };
+    // Use TypeORM's getRepository to fetch the products
+    const productRepository = getRepository(ProductDTO);
+    const filteredProducts = await productRepository.find(options);
+
+    return filteredProducts;
+  }
+
+  async createProduct(body: ProductDTO): Promise<ProductEntity> {
     return (await this.execRepository).save(body);
   }
   async deleteProduct(id: string): Promise<DeleteResult> {
     return (await this.execRepository).delete({ id });
   }
-  async updateProduct(id: string,infoUpdate: ProductDTO): Promise<UpdateResult> {
+  async updateProduct(id: string, infoUpdate: ProductDTO): Promise<UpdateResult> {
     return (await this.execRepository).update(id, infoUpdate);
   }
 }
