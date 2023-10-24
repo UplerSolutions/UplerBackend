@@ -6,6 +6,4 @@ export class CategoryDTO extends BaseDTO{
     @IsNotEmpty()
     categoryName!:string
 
-    @IsNotEmpty()
-    products!:ProductEntity[]
 }
