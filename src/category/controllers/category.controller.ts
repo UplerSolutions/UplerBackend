@@ -26,6 +26,7 @@ export class CategoryController {
     const name=req.query.name as string
     try{
       const data=await this.categoryService.searchCategoryByName(name);
+      res.status(200).json(data);
     }catch(e){
       console.error(e);
     }
