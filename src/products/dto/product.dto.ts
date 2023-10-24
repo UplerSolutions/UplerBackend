@@ -22,7 +22,7 @@ export class ProductDTO extends BaseDTO {
   price!: number
 
   @IsNotEmpty()
-  category!: CategoryEntity
+  category!: CategoryEntity 
 
   @IsNotEmpty()
   imageUrl!: string
