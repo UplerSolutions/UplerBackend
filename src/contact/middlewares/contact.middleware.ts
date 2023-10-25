@@ -3,10 +3,10 @@ import { ContactDTO } from "../dto/contact.dto";
 import { validate } from "class-validator";
 import { SharedMiddleware } from "../../shared/middlewares/shared.middleware";
 
-export class UserMiddleware extends SharedMiddleware{
+export class ContactMiddleware extends SharedMiddleware{
     constructor(
     ) {super()}
-    userValidator(req: Request, res: Response, next: NextFunction) {
+    contactValidator(req: Request, res: Response, next: NextFunction) {
       const { name, lastname, email,enterprise,phone,message } =
         req.body;
   

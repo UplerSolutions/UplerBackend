@@ -14,6 +14,7 @@ import { PurchaseRouter } from "./purchase/purchase.router";
 import { LoginStrategy } from "./auth/strategies/login.strategy";
 import { JwtStrategy } from "./auth/strategies/jwt.strategy";
 import { AuthRouter } from "./auth/auth.router";
+import { ContactRouter } from "./contact/contact.router";
 import helmet from "helmet";
 
 
@@ -52,7 +53,8 @@ class ServerBootstrap extends ConfigServer{
             new CustomerRouter().router,
             new ProductRouter().router,
             new PurchaseRouter().router,
-            new AuthRouter().router
+            new AuthRouter().router,
+            new ContactRouter().router
         ];
     };
 
