@@ -12,8 +12,6 @@ export class ContactRouter extends BaseRouter<
     super(ContactController, ContactMiddleware);
   }
 
-
-
   routes(): void {
     this.router.get("/purchaseProducts", (req, res) =>
       this.controller.getContact(req, res)
