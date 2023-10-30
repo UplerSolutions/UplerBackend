@@ -36,6 +36,7 @@ export class ProductController {
     const high = parseInt(req.query.high as string, 10) || 1000;
     try{
       const data = await this.productService.searchProductByRange(low, high)
+      res.status(200).json(data);
     }catch(e){
       console.error(e);
     }
