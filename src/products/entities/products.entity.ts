@@ -26,6 +26,18 @@ export class ProductEntity extends BaseEntity {
   @Column()
   imageUrl!: string
 
+  @Column()
+  founderName!: string
+
+  @Column()
+  founderImage!: string
+
+  @Column()
+  founderDescription!: string
+
+  @Column()
+  linkdin!: string
+
   @ManyToOne(
     () => CategoryEntity,
     (category) => category.products
