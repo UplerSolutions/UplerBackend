@@ -39,7 +39,7 @@ export class ProductService extends BaseService<ProductEntity> {
     return  (await this.execRepository).find({
       where: [
         {
-          category: category.categoryName,
+          category: category,
         }
       ],
     })
