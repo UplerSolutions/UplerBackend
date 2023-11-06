@@ -44,7 +44,7 @@ export class ProductController {
   async getProductsByCategory(req: Request, res: Response) {
     try {
       // Extract the categoryId from the request query
-      const category= req.query.categoryId as string;
+      const category= req.query.categoryName as string;
       // Call the productService to filter products by category
       const data = await this.productService.filterProductsByCategory(category);
       res.status(200).json(data);

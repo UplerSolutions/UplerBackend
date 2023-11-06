@@ -35,11 +35,11 @@ export class ProductService extends BaseService<ProductEntity> {
       ],
     })
   }
-  async filterProductsByCategory(category: any): Promise<ProductEntity[]> {
-    return  (await this.execRepository).find({
+  async filterProductsByCategory(categoryName2: any): Promise<ProductEntity[]> {
+    return (await this.execRepository).find({
       where: [
         {
-          category: category,
+          category: { categoryName: categoryName2 },
         }
       ],
     })
