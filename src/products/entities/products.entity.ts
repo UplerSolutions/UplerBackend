@@ -11,7 +11,7 @@ export class ProductEntity extends BaseEntity {
   @Column()
   lowDescription!: string
 
-  @Column({ type: 'text' })
+  @Column({ length: 2500 })
   longDescription!: string
 
   @Column()
