@@ -45,7 +45,16 @@ export class ProductService extends BaseService<ProductEntity> {
     })
 
   }
-
+  async filterProductsByCategoryRangePrice(category:string,low:number,high:number):Promise<ProductEntity[]>{
+    return (await this.execRepository).find({
+      where: [
+        {
+          category: { categoryName: category },
+          price: Between(low, high)
+        }
+      ],
+    })
+  }
   async createProduct(body: ProductDTO): Promise<ProductEntity> {
     return (await this.execRepository).save(body);
   }

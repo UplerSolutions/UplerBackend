@@ -1,17 +1,27 @@
 version: '3.1'
 
 services:
-  mysql_db:
-    image: mysql:5.7
-    volumes: 
-      - /home/mateo-pc/Desktop/type-pruebas/mysql/init.sql/:/docker-entrypoint-initdb.d/init.sql
-    command: --init-file /docker-entrypoint-initdb.d/init.sql --bind-address=0.0.0.0
-    ports:
-      - "3307:3306"
+  postgres:
+    image: postgres:latest
+    restart: always
+    volumes:
+    - './postgres_data:/var/lib/postgresql/data'
     environment:
-      MYSQL_DATABASE: mydb
-      MYSQL_ROOT_USER: super
-      MYSQL_USER: super
-      MYSQL_ROOT_PASSWORD: Upler2023
-      MYSQL_PASSWORD: Upler2023
+    - POSTGRES_PASSWORD=mateo2001
+    ports:
+    - '5435:5432'
+# services:
+#   mysql_db:
+#     image: mysql:5.7
+#     volumes: 
+#       - /home/mateo-pc/Desktop/type-pruebas/mysql/init.sql/:/docker-entrypoint-initdb.d/init.sql
+#     command: --init-file /docker-entrypoint-initdb.d/init.sql --bind-address=0.0.0.0
+#     ports:
+#       - "3307:3306"
+#     environment:
+#       MYSQL_DATABASE: mydb
+#       MYSQL_ROOT_USER: super
+#       MYSQL_USER: super
+#       MYSQL_ROOT_PASSWORD: Upler2023
+#       MYSQL_PASSWORD: Upler2023
 
