@@ -1,7 +1,7 @@
 import { DataSource, DataSourceOptions } from "typeorm";
 import * as dotenv from "dotenv";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
-import { createConnection } from "mysql2";
+// import { createConnection } from "mysql2";
 
 dotenv.config({
   path:
@@ -11,7 +11,7 @@ dotenv.config({
 });
 
 const Config: DataSourceOptions = {
-  type: "mysql",//postgres
+  type: "postgres",//mysql
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
   username: process.env.DB_USER,
@@ -23,7 +23,12 @@ const Config: DataSourceOptions = {
   // migrationsRun: false,
   logging: false,
   namingStrategy: new SnakeNamingStrategy(),
-  driver:createConnection
+  // driver:createConnection
+  extra: {
+    ssl: {
+      rejectUnauthorized: false, // Ajusta esto según tus necesidades de seguridad
+    },
+  },
 };
 
 

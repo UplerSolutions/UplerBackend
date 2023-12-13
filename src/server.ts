@@ -59,7 +59,7 @@ class ServerBootstrap extends ConfigServer{
             new AuthRouter().router,
             new ContactRouter().router,
             new CommentRouter().router,
-            new SubCommentRouter().router,
+            new SubCommentRouter().router, 
         ];
     };
 
