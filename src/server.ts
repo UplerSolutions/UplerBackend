@@ -18,7 +18,7 @@ import { ContactRouter } from "./contact/contact.router";
 import helmet from "helmet";
 import { CommentRouter } from "./comment/comment.router";
 import { SubCommentRouter } from "./subcomment/comment.router";
-
+import { ProductInfoRouter } from "./products-information/product.info.route";
 
 
 
@@ -60,6 +60,7 @@ class ServerBootstrap extends ConfigServer{
             new ContactRouter().router,
             new CommentRouter().router,
             new SubCommentRouter().router, 
+            new ProductInfoRouter().router,
         ];
     };
 

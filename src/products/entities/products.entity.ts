@@ -42,6 +42,7 @@ export class ProductEntity extends BaseEntity {
     () => CategoryEntity,
     (category) => category.products
   )
+
   @JoinColumn({ name: 'category_id' })
   category!: CategoryEntity
 
