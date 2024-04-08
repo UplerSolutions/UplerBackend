@@ -9,14 +9,25 @@ export class ContactDTO extends BaseDTO {
     lastname!:string;
 
     @IsNotEmpty()
-    enterprise!:string;
-
-    @IsNotEmpty()
     email!:string;
 
     @IsNotEmpty()
-    phone!:string;
+    position!:string;
 
     @IsNotEmpty()
-    message!:string;
+    companyName!:string;
+
+    @IsNotEmpty()
+    website!:string;
+
+    @IsNotEmpty()
+    productName!:string
+
+    @IsNotEmpty()
+    productCategory!:string;
+
+    @IsNotEmpty()
+    productDescription!:string;
+
+
 }

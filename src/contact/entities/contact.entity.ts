@@ -10,14 +10,23 @@ export class ContactEntity extends BaseEntity{
     lastname!:string;
 
     @Column()
-    enterprise!:string;
-
-    @Column()
     email!:string;
 
     @Column()
-    phone!:string;
+    position!:string;
 
     @Column()
-    message!:string;
+    companyName!:string;
+
+    @Column()
+    website!:string;
+
+    @Column()
+    productName!:string
+
+    @Column()
+    productCategory!:string;
+
+    @Column()
+    productDescription!:string;
 }

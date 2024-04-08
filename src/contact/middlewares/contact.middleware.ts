@@ -7,7 +7,7 @@ export class ContactMiddleware extends SharedMiddleware{
     constructor(
     ) {super()}
     contactValidator(req: Request, res: Response, next: NextFunction) {
-      const { name, lastname, email,enterprise,phone,message } =
+      const { name, lastname, email,companyName, position, website, productName, productCategory, productDescription } =
         req.body;
   
       const valid = new ContactDTO();
@@ -15,9 +15,13 @@ export class ContactMiddleware extends SharedMiddleware{
       valid.name = name;
       valid.lastname = lastname;
       valid.email = email;
-      valid.enterprise = enterprise;
-      valid.phone = phone;
-      valid.message = message;
+      valid.companyName = companyName;
+      valid.position = position;
+      valid.website = website;
+      valid.productName = productName;
+      valid.productCategory = productCategory;
+      valid.productDescription = productDescription;
+
       validate(valid).then((err) => {
         if (err.length > 0) {
           return this.httpResponse.InternalServerError(res, err);

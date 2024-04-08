@@ -1,6 +1,6 @@
 import { DeleteResult, UpdateResult, ILike, Between, FindManyOptions } from "typeorm";
 import { BaseService } from "../../config/base.service";
-import { ProductsInfoEntity } from "../entity/products.info.entities";
+import { ProductsInfoEntity } from "../entities/productsinfo.entity";
 import { ProductInfoDTO } from "../dto/products.info.dto";
 
 

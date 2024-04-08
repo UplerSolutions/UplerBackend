@@ -13,23 +13,23 @@ export class ContactRouter extends BaseRouter<
   }
 
   routes(): void {
-    this.router.get("/purchaseProducts", (req, res) =>
+    this.router.get("/getContacts", (req, res) =>
       this.controller.getContact(req, res)
     );
-    this.router.get("/purchaseProduct/:id", (req, res) =>
+    this.router.get("/getContact/:id", (req, res) =>
       this.controller.getContactById(req, res)
     );
     this.router.post(
-      "/createPurchaseProduct",
+      "/createContact",
       (req, res, next) => [
         this.middleware.contactValidator(req, res, next),
       ],
       (req, res) => this.controller.createContact(req, res)
     );
-    this.router.put("/updatePurchaseProduct/:id", (req, res) =>
+    this.router.put("/updateContact/:id", (req, res) =>
       this.controller.updateContact(req, res)
     );
-    this.router.delete("/deletePurchaseProduct/:id", (req, res) =>
+    this.router.delete("/deleteContact/:id", (req, res) =>
       this.controller.deleteContact(req, res)
     );
   }

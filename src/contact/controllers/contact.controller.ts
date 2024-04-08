@@ -30,9 +30,18 @@ export class ContactController {
       const resend = new Resend(process.env.RESEND_API_KEY);
       resend.emails.send({
         from: 'contacto@upler.dev',
-        to: 'joaquinmarmolnecochea@gmail.com',
-        subject: 'Hello World',
-        html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
+        to: 'serafinkocho@gmail.com',
+        subject: 'Contacto para ingreso upler',
+        html: `<p>Hola Upler, alguien quiere unirse a la empresa! aqui estan sus datos para que lo contactes:</p>
+              Nombre y Apelido:${req.body.name} ${req.body.lastname},
+              Company:${req.body.companyName},
+              Position:${req.body.position},
+              Email:${req.body.email},
+              Website:${req.body.website},
+              Producto:${req.body.productName},
+              Tipo de Producto:${req.body.productCategory},
+              Descripcion del Producto:${req.body.productDescription}`
+              
       });
       res.status(200).json(data);
     } catch (e) {
