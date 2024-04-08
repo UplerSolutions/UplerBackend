@@ -30,7 +30,7 @@ export class ContactController {
       const resend = new Resend(process.env.RESEND_API_KEY);
       resend.emails.send({
         from: 'onboarding@resend.dev',
-        to: 'serafinkocho@gmail.com',
+        to: 'mlonzayes.ml@gmail.com',
         subject: 'Contacto para ingreso upler',
         html: `<p>Hola Upler, alguien quiere unirse a la empresa! aqui estan sus datos para que lo contactes:</p>
               Nombre y Apelido:${req.body.name} ${req.body.lastname},
