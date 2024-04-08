@@ -29,7 +29,7 @@ export class ContactController {
       const data = await this.categoryService.createCategory(req.body);
       const resend = new Resend(process.env.RESEND_API_KEY);
       resend.emails.send({
-        from: 'contacto@upler.dev',
+        from: 'onboarding@resend.dev',
         to: 'serafinkocho@gmail.com',
         subject: 'Contacto para ingreso upler',
         html: `<p>Hola Upler, alguien quiere unirse a la empresa! aqui estan sus datos para que lo contactes:</p>
