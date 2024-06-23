@@ -35,10 +35,11 @@ class ServerBootstrap extends ConfigServer{
         this.passportUse()
         this.dbConnect()
         this.app.use(morgan("dev"));
-        this.app.use(cors({ //definimos los permisos de cors
-            origin: true,
-            methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
-            credentials: true,
+        this.app.use(
+            cors({ //definimos los permisos de cors
+                origin: true,
+                methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+                credentials: true,
         }));
         this.app.use(helmet.xssFilter()); //previene inyeccion javascript
         this.app.use(helmet.noSniff());
